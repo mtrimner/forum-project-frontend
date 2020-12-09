@@ -1,0 +1,7 @@
+.underline {
+    border-bottom: 2px solid currentColor;
+}
+
+.pointer {
+    cursor: pointer;
+}
