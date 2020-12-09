@@ -1,9 +1,9 @@
 document.addEventListener("DOMContentLoaded", function() {
 
-    API.addPosts()
+    API.fakeLogin()
 })
-
 const mainContainer = document.getElementById('main-container')
+let currentUser;
 
 // function clickEvents(e) {
 //     if (e.target.parentElement.className === 'header') {
