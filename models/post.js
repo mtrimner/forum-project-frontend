@@ -19,12 +19,21 @@ class Post {
        `
     }
 
-    renderPost() {
-    //    const mainContainer = document.getElementById('main-container')
+    singlePostHTML() {
+        return `
+        <h2 class="header"><span class="underline pointer">${this.title}</span></h2>
+        <p>${this.content}</p>
+       `
+    }
+
+    // callback is the postHTML or singlePostHTML methods
+    renderPost(callback) {
+        
+       let boundPostHTML = callback.bind(this) 
        const postCard = document.createElement('div')
        postCard.classList.add('post-card')
        postCard.id = this.id
-       postCard.innerHTML += this.postHTML()
+       postCard.innerHTML += boundPostHTML()
        mainContainer.appendChild(postCard)
        postCard.addEventListener('click', (e) => {
         this.clickEvents(e)
@@ -41,13 +50,15 @@ class Post {
     // }
 
     showComments() {
+     const postDiv = document.getElementById(this.id)
+     
      const commentList = document.createElement('ul')
      for (const comment of this.comments) {
         const li = document.createElement('li')
         li.innerHTML = `<p>${comment.content}</p>`
         commentList.appendChild(li)
      }
-     mainContainer.appendChild(commentList)
+     postDiv.appendChild(commentList)
     }
 
     showPost(e, callback) {
@@ -67,6 +78,10 @@ class Post {
             }
             this.showPost(e, this.showComments)
         }
+    }
+
+    newPost() {
+        
     }
 
 
