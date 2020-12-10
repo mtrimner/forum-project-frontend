@@ -28,7 +28,6 @@ class Post {
 
     // callback is the postHTML or singlePostHTML methods
     renderPost(callback) {
-        
        let boundPostHTML = callback.bind(this) 
        const postCard = document.createElement('div')
        postCard.classList.add('post-card')
@@ -51,7 +50,6 @@ class Post {
 
     showComments() {
      const postDiv = document.getElementById(this.id)
-     
      const commentList = document.createElement('ul')
      for (const comment of this.comments) {
         const li = document.createElement('li')
@@ -59,6 +57,7 @@ class Post {
         commentList.appendChild(li)
      }
      postDiv.appendChild(commentList)
+     newComment()
     }
 
     showPost(e, callback) {
@@ -81,7 +80,7 @@ class Post {
     }
 
     newPost() {
-        
+
     }
 
 

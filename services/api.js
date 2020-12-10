@@ -36,5 +36,28 @@ static addPost(postId, callback) {
     })
 }
 
+static addComment(e) {
+    e.preventDefault()
+    const postId = document.querySelector('.post-card').id
+    let data = {
+        'content': e.target.content.value,
+        'user_id': currentUser.id,
+        'post_id': postId
+    };
+    fetch('http://localhost:3000/comments', {
+        method: "POST",
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+    })
+    .then(resp => resp.json())
+    .then(comment => {
+        const {id, content, post_id, user_id} = comment
+        new Comment(id, content, post_id, user_id)
+    })
+    
+}   
+
 
 }
