@@ -14,7 +14,7 @@ class Post {
     postHTML() {
        return `
         <h2 class="header"><span class="underline pointer">${this.title}</span></h2>
-        <h2>${this.deletePostButton()}</h2>
+        ${this.deletePostButton()}
         <p>${this.content}</p>
         <p>${this.user.username}</p>
        `
@@ -45,7 +45,6 @@ class Post {
      const postDiv = document.getElementById(this.id)
      const commentList = document.createElement('ul')
      for (const comment of this.comments) {
-         debugger
         const li = document.createElement('li')
         li.classList.add('comment-item')
         li.id = comment.user_id
@@ -76,6 +75,7 @@ class Post {
             this.showPost(e, this.showComments)
         }
         else if (e.target.className === 'delete') {
+
             this.deletePost(e)
         } else if (e.target.className === 'delete-comment') {
             this.deleteComment(e)
@@ -122,7 +122,7 @@ class Post {
     }
 
     deletePost(e) {
-        const id = parseInt(e.target.parentElement.parentElement.id)
+        const id = parseInt(e.target.parentElement.id)
         fetch(`http://localhost:3000/posts/${id}`, {
             method: 'DELETE'
         })

@@ -55,6 +55,7 @@ static addComment(e) {
     .then(comment => {
         const {id, content, post_id, user_id} = comment
         new Comment(id, content, post_id, user_id)
+        document.getElementById('comment-form').reset()
     })
     
 }   
