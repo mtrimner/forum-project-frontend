@@ -10,7 +10,10 @@ class Comment {
     static newCommentFormHTML() {
         return `
         <form id="comment-form">
-        <input type="textarea" name="content"/>
+        <div class="form-group">
+        <label for="content">New Comment</label>
+        <input type="textarea" name="content" class="form-control"/>
+        </div>
         <br/>
         <input type="submit" value="Submit"/>
         </form>
@@ -21,7 +24,7 @@ class Comment {
         const commentCard = document.createElement('div')
         commentCard.classList.add('comment-card')
         commentCard.innerHTML += Comment.newCommentFormHTML()
-        mainContainer.appendChild(commentCard)
+        mainRow.appendChild(commentCard)
         document.getElementById('comment-form').addEventListener('submit', e => {
             API.addComment(e)
         })
@@ -31,6 +34,7 @@ class Comment {
     appendComment() {
         const commentList = document.querySelector('ul')
         const listItem = document.createElement('li')
+        listItem.classList.add('comment-item', 'list-group-item')
         listItem.innerHTML = `<p>${this.content}</p>`
         commentList.appendChild(listItem)
 

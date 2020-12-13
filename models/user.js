@@ -9,7 +9,7 @@ class User {
         const userInfo = document.createElement('div')
         userInfo.classList.add('users-list')
         userInfo.id = this.id
-        userInfo.innerHTML += `<h2><span class="underline pointer">${this.username}</span></h2>`
+        userInfo.innerHTML += `<h3><span class="underline pointer">${this.username}</span></h3>`
         mainContainer.appendChild(userInfo)
         userInfo.addEventListener('click', (e) => {
             currentUser = this

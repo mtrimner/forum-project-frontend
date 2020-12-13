@@ -13,10 +13,9 @@ class Post {
 
     postHTML() {
        return `
-        <h2 class="header"><span class="underline pointer">${this.title}</span></h2>
+        <h4 class="header"><span class="underline pointer">${this.title}</span></h4>
         ${this.deletePostButton()}
-        <p>${this.content}</p>
-        <p>${this.user.username}</p>
+        <p>${this.content} - ${this.user.username}</p>
        `
     }
 
@@ -34,7 +33,7 @@ class Post {
        postCard.classList.add('post-card')
        postCard.id = this.id
        postCard.innerHTML += boundPostHTML()
-       mainContainer.appendChild(postCard)
+       mainRow.appendChild(postCard)
        postCard.addEventListener('click', (e) => {
         this.clickEvents(e)
         })
@@ -44,12 +43,13 @@ class Post {
     showComments(callback) {
      const postDiv = document.getElementById(this.id)
      const commentList = document.createElement('ul')
+     commentList.classList.add('list-group')
      for (const comment of this.comments) {
         const li = document.createElement('li')
-        li.classList.add('comment-item')
+        li.classList.add('comment-item', 'list-group-item')
         li.id = comment.user_id
         li.innerHTML = `
-        <p>${comment.content}</p><button class="delete-comment" id="${comment.id}">DELETE</button>
+        <p>${comment.content} <button class="delete-comment" id="${comment.id}">DELETE</button></p>
         `
         if (li.id != currentUser.id) {
             li.getElementsByClassName('delete-comment')[0].style.display = "none"
@@ -86,7 +86,7 @@ class Post {
         const newPostDiv = document.createElement('div')
         newPostDiv.classList.add('new-post-div')
         newPostDiv.innerHTML = Post.newPostFormHTML()
-        mainContainer.appendChild(newPostDiv)
+        mainRow.appendChild(newPostDiv)
         newPostDiv.addEventListener('submit', e => {
             API.createPost(e)
         })

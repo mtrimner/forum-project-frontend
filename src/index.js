@@ -1,3 +1,4 @@
+
 document.addEventListener("DOMContentLoaded", function() {
 
     API.fakeLogin()
@@ -12,6 +13,7 @@ document.addEventListener("DOMContentLoaded", function() {
     })
 })
 const mainContainer = document.getElementById('main-container')
+const mainRow = document.getElementById('main-row')
 let currentUser;
 
 
