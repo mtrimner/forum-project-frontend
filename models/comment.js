@@ -7,12 +7,43 @@ class Comment {
         this.appendComment()
     }
 
+    static newCommentFormHTML() {
+        return `
+        <form id="comment-form">
+        <input type="textarea" name="content"/>
+        <br/>
+        <input type="submit" value="Submit"/>
+        </form>
+        `
+    }
+    
+    static newComment() {
+        const commentCard = document.createElement('div')
+        commentCard.classList.add('comment-card')
+        commentCard.innerHTML += Comment.newCommentFormHTML()
+        mainContainer.appendChild(commentCard)
+        document.getElementById('comment-form').addEventListener('submit', e => {
+            API.addComment(e)
+        })
+       
+    }
+
     appendComment() {
         const commentList = document.querySelector('ul')
         const listItem = document.createElement('li')
         listItem.innerHTML = `<p>${this.content}</p>`
         commentList.appendChild(listItem)
 
+    }
+
+    deleteCommentButton() {
+        for (const comment of this.comments) {
+            if (comment.user_id == currentUser.id) {
+                comment.style.display
+            }
+
+        }
+        
     }
 
     // static newComment() {

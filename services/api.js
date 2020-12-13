@@ -16,8 +16,8 @@ static addPosts() {
     .then(resp => resp.json())
     .then(posts => {
         for (const post of posts) {
-            const {id, title, category, content, user_id, created_at, comments} = post
-            let currentPost = new Post(id, title, category, content, user_id, created_at, comments)
+            const {id, title, category, content, user_id, created_at, comments, user} = post
+            let currentPost = new Post(id, title, category, content, user_id, created_at, comments, user)
             currentPost.renderPost(currentPost.postHTML)
         }
     })
@@ -27,8 +27,8 @@ static addPost(postId, callback) {
     fetch(`http://localhost:3000/posts/${postId}`)
     .then(resp => resp.json())
     .then (post => {
-        const {id, title, category, content, user_id, created_at, comments} = post
-        let selectedPost = new Post(id, title, category, content, user_id, created_at, comments)
+        const {id, title, category, content, user_id, created_at, comments, user} = post
+        let selectedPost = new Post(id, title, category, content, user_id, created_at, comments, user)
         selectedPost.renderPost(selectedPost.singlePostHTML)
         // callback is the showComments method
         let boundComments = callback.bind(selectedPost)
@@ -55,6 +55,34 @@ static addComment(e) {
     .then(comment => {
         const {id, content, post_id, user_id} = comment
         new Comment(id, content, post_id, user_id)
+    })
+    
+}   
+
+static createPost(e) {
+    e.preventDefault()
+    let data = {
+        'title': e.target.title.value,
+        'category': e.target.category.value,
+        'content': e.target.content.value,
+        'user_id': currentUser.id,
+    };
+    fetch('http://localhost:3000/posts', {
+        method: "POST",
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+    })
+    .then(resp => resp.json())
+    .then(post => {
+        const {id, content, post_id, user_id, created_at, comments} = post
+        const newPost = new Post(id, content, post_id, user_id, created_at, comments)
+        let divsToRemove = document.getElementsByClassName("new-post-div")
+            for (var i = divsToRemove.length-1; i >= 0; i--) {
+            divsToRemove[i].remove();
+            }
+        API.addPosts()
     })
     
 }   
