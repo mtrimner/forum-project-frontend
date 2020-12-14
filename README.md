@@ -1,11 +1,13 @@
 # Form Project Front-end
 
-Thanks for checking out my forum project. This 
+This is a single page app modeled after a reddit/forum style web application. This was created as a way to learn Javascript for FlatIron schools software engineering program. You may notice some odd design choices such as rendering HTML in multiple different ways or odd use of callbacks. This was done as a way for me to experiment with different concepts in javascript and to gain a better understanding of javascript works.
+
+You can find the rails backend here: https://github.com/mtrimner/forum-project-backend
 
 
 # Installation
 
-Fork and clone this repo to your computer.
+Fork and clone both the front end and back end (linked above) of this project.
 
 Then, run 
 ```
@@ -17,19 +19,15 @@ run
 ```
 rails s
 ```
-to start your test server and enter localhost:3000 in your browser.
+on the backend and
+```
+npx reload -b
+```
+on the front end.
 
 # How To Run The Program
 
--After you have your server up, create an account and follow the on screen instructions.
-
-# ToDo List
-
-[] Add calender feature so users can see their diet history.
-[] Add in data manipulation for the "Goal" selector.
-[] Add in meal macro filter to the "diets/show" page.
-[] Add check box to "diets/show" page that for user to check if they hit all macro goals.
-[] Add in prompts for the user to enter a current weight on a consistent basis for the calculations to adjust depending on current progress.
+-After you have your server up with the previous commands, click on a name that appears on the initial screen. 
 
 # Contributing
 
