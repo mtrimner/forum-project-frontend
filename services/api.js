@@ -57,6 +57,10 @@ static addComment(e) {
         new Comment(id, content, post_id, user_id)
         document.getElementById('comment-form').reset()
     })
+    .catch((error) => {
+        console.log("test")
+        alert("ooops, cant be blank")
+    })
     
 }   
 
@@ -75,7 +79,10 @@ static createPost(e) {
         },
         body: JSON.stringify(data)
     })
-    .then(resp => resp.json())
+    .then(resp => { 
+        debugger
+        if (resp.ok) { 
+            resp.json()
     .then(post => {
         const {id, content, post_id, user_id, created_at, comments} = post
         const newPost = new Post(id, content, post_id, user_id, created_at, comments)
@@ -84,6 +91,13 @@ static createPost(e) {
             divsToRemove[i].remove();
             }
         API.addPosts()
+    })
+} else {alert("Fields can't be blank")
+    }
+})
+    .catch((error) => {
+        console.log(error)
+        alert("Ooops! Fields can't be blank.")
     })
     
 }   

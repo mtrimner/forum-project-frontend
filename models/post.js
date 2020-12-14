@@ -42,6 +42,7 @@ class Post {
 
     showComments(callback) {
      const postDiv = document.getElementById(this.id)
+     const space = document.createElement('br')
      const commentList = document.createElement('ul')
      commentList.classList.add('list-group')
      for (const comment of this.comments) {
@@ -57,6 +58,7 @@ class Post {
         commentList.appendChild(li)
      }
      postDiv.appendChild(commentList)
+     postDiv.appendChild(space)
      Comment.newComment()
     }
 

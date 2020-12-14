@@ -22,7 +22,7 @@ class Comment {
     
     static newComment() {
         const commentCard = document.createElement('div')
-        commentCard.classList.add('comment-card')
+        commentCard.classList.add('comment-card', 'card')
         commentCard.innerHTML += Comment.newCommentFormHTML()
         mainRow.appendChild(commentCard)
         document.getElementById('comment-form').addEventListener('submit', e => {

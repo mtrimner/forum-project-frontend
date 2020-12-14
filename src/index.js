@@ -1,6 +1,6 @@
 
 document.addEventListener("DOMContentLoaded", function() {
-
+    User.welcomeScreen()
     API.fakeLogin()
     document.getElementById('head-container').addEventListener('click', e => {
         if (e.target.className.includes('new-post')) {
@@ -11,6 +11,7 @@ document.addEventListener("DOMContentLoaded", function() {
             Post.newPostForm()
         }
     })
+        document.getElementById('new-post-button').style.visibility = "hidden"
 })
 const mainContainer = document.getElementById('main-container')
 const mainRow = document.getElementById('main-row')
