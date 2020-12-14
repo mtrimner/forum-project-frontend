@@ -31,7 +31,7 @@ on the front end.
 
 # Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/mtrimner/DietCoach
+Bug reports and pull requests are welcome on GitHub at https://github.com/mtrimner/forum-project-frontend
 
 # License
 
