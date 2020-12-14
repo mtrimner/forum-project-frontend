@@ -76,7 +76,7 @@ class Post {
             }
             this.showPost(e, this.showComments)
         }
-        else if (e.target.className === 'delete') {
+        else if (e.target.className.includes('delete')) {
 
             this.deletePost(e)
         } else if (e.target.className === 'delete-comment') {
@@ -119,7 +119,7 @@ class Post {
 
     deletePostButton() {
         if (this.user_id === currentUser.id) {
-           return `<button class="delete">DELETE</button>`
+           return `<button class="delete btn btn-outline-primary btn-sm">DELETE</button>`
         } else {return ""}
     }
 
@@ -129,7 +129,7 @@ class Post {
             method: 'DELETE'
         })
         .then(() => {
-            document.getElementById('main-container').removeChild(document.getElementById(id))
+            document.getElementById('main-row').removeChild(document.getElementById(id))
         })
     }
 

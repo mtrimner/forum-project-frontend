@@ -10,19 +10,19 @@ class Comment {
     static newCommentFormHTML() {
         return `
         <form id="comment-form">
-        <div class="form-group">
+        <div class="mt-3 form-group">
         <label for="content">New Comment</label>
-        <input type="textarea" name="content" class="form-control"/>
+        <input type="textarea" id="content" name="content" class="form-control"/>
         </div>
         <br/>
-        <input type="submit" value="Submit"/>
+        <button type="submit" class="mb-3 btn btn-primary" value="Submit">Submit</button>
         </form>
         `
     }
     
     static newComment() {
         const commentCard = document.createElement('div')
-        commentCard.classList.add('comment-card', 'card')
+        commentCard.classList.add('comment-card', 'card', 'border-primary')
         commentCard.innerHTML += Comment.newCommentFormHTML()
         mainRow.appendChild(commentCard)
         document.getElementById('comment-form').addEventListener('submit', e => {
