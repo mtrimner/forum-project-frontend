@@ -51,7 +51,7 @@ class Post {
         li.classList.add('comment-item', 'list-group-item')
         li.id = comment.user_id
         li.innerHTML = `
-        <p>${comment.content} <button class="delete-comment" id="${comment.id}">DELETE</button></p>
+        <p>${comment.content} <button class="delete-comment btn btn-outline-primary btn-sm" id="${comment.id}">DELETE</button></p>
         `
         if (li.id != currentUser.id) {
             li.getElementsByClassName('delete-comment')[0].style.display = "none"

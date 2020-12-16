@@ -51,12 +51,17 @@ static addComment(e) {
         },
         body: JSON.stringify(data)
     })
-    .then(resp => resp.json())
+    .then(resp => {
+        if (resp.ok) {
+        resp.json()
     .then(comment => {
         const {id, content, post_id, user_id} = comment
         new Comment(id, content, post_id, user_id)
         document.getElementById('comment-form').reset()
     })
+} else {alert("Fields can't be blank")
+    }
+})
     .catch((error) => {
         console.log("test")
         alert("ooops, cant be blank")
@@ -80,7 +85,6 @@ static createPost(e) {
         body: JSON.stringify(data)
     })
     .then(resp => { 
-        debugger
         if (resp.ok) { 
             resp.json()
     .then(post => {
