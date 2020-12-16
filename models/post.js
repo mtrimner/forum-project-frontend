@@ -35,6 +35,7 @@ class Post {
        postCard.innerHTML += boundPostHTML()
        mainRow.appendChild(postCard)
        postCard.addEventListener('click', (e) => {
+
         this.clickEvents(e)
         })
     }
@@ -76,10 +77,10 @@ class Post {
             }
             this.showPost(e, this.showComments)
         }
-        else if (e.target.className.includes('delete')) {
-
+        else if (e.target.className.includes('deleted')) {
+            debugger
             this.deletePost(e)
-        } else if (e.target.className === 'delete-comment') {
+        } else if (e.target.className.includes('delete-comment')) {
             this.deleteComment(e)
         }
     }
@@ -119,7 +120,7 @@ class Post {
 
     deletePostButton() {
         if (this.user_id === currentUser.id) {
-           return `<button class="delete btn btn-outline-primary btn-sm">DELETE</button>`
+           return `<button class="deleted btn btn-outline-primary btn-sm">DELETE</button>`
         } else {return ""}
     }
 
@@ -140,7 +141,7 @@ class Post {
         })
         .then(resp => {
             debugger
-            document.getElementById(commentId).parentElement.remove()
+            document.getElementById(commentId).parentElement.parentElement.remove()
         })
     }
 
