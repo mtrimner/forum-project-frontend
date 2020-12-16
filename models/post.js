@@ -97,23 +97,29 @@ class Post {
 
     static newPostFormHTML() {
         return `
+        <h2>Create A New Post</h2>
         <form id="post-form">
+        <div class="mt-3 form-group">
         <label for="title">Title</label><br/>
-        <input type="textarea" id="title" name="title"/>
+        <input type="textarea" id="title" name="title" class="form-control"/>
+        </div>
         <br/>
+        <div class="mt-3 form-group">
         <label for="content">Content</label><br/>
-        <input type="textarea" id="content" name="content"/>
+        <input type="textarea" id="content" name="content" class="form-control"/>
+        </div>
         <br/>
         <input type="hidden" name="user_id" value="${currentUser.id}"/>
         <br/>
+        <div class="mt-3 form-group">
         <label for="category">Category</label><br/>
-        <select name="category" id="category">
+        <select name="category" id="category" class="form-control">
             <option value="philosophy">Philosophy</option>
             <option value="food">Food</option>
             <option value="tech">Tech</option>
             <option value="random">Random</option>
         </select>
-        
+        </div>
         <input type="submit" value="Submit"/>
         `
     }
