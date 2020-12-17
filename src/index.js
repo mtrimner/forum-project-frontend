@@ -9,9 +9,16 @@ document.addEventListener("DOMContentLoaded", function() {
                 divsToRemove[i].remove(); 
             } 
             Post.newPostForm()
+        } else if (e.target.className.includes('go-home')) {
+            const divsToRemove = document.querySelectorAll('.post-card, .comment-card, .users-list, .new-post-div')
+            for (var i = divsToRemove.length-1; i >= 0; i--) {
+                divsToRemove[i].remove(); 
+            } 
+            API.addPosts()
         }
     })
         document.getElementById('new-post-button').style.visibility = "hidden"
+        document.getElementById('go-home').style.visibility = "hidden"
 })
 const mainContainer = document.getElementById('main-container')
 const mainRow = document.getElementById('main-row')

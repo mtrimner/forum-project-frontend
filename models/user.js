@@ -31,6 +31,7 @@ class User {
             }
             API.addPosts()
             document.getElementById('new-post-button').style.visibility = "visible"
+            document.getElementById('go-home').style.visibility = "visible"
         })
     }
 
